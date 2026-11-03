@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const [businessName, setBusinessName] = useState("سالن زیبایی تخصصی");
-  const [managerName, setManagerName] = useState("مدیر سالن");
+  const [businessName, setBusinessName] = useState("سالن زیبایی تخصصی (نسخه دمو)");
+  const [managerName, setManagerName] = useState("امیرسام یعقوبی");
   const [managerPhone, setManagerPhone] = useState("09366681963");
-  const [managerInstagram, setManagerInstagram] = useState("salon_manager_page");
+  const [managerInstagram, setManagerInstagram] = useState("royalbook_official");
   const [cardNumber, setCardNumber] = useState("6037-9974-xxxx-xxxx");
 
   // سهمیه تست رایگان (۱۰ توکن رایگان)
@@ -71,25 +71,25 @@ export default function App() {
     setFreeTokens(freeTokens - 1);
   };
 
-  // ارسال خودکار گزارش به مدیر در پیام‌رسان بله (Bale)
+  // ارسال گزارش به مدیر در پیام‌رسان بله
   const sendToBaleManager = () => {
-    const text = encodeURIComponent(`🤖 [دستیار هوشمند رویال‌فام - پیام‌رسان بله]:\nرزرو جدید ثبت شد!\n\n👤 مشتری: ${customerName}\n📱 تلفن: ${customerPhone}\n💼 خدمت: ${selectedService}\n💎 پلن: ${selectedPlan}\n🔑 کد پیگیری: ${bookingSuccess}`);
+    const text = encodeURIComponent(`🤖 [سیستم هوشمند رویال‌فام - پیام‌رسان بله]:\nرزرو جدید ثبت شد!\n\n👤 مشتری: ${customerName}\n📱 تلفن: ${customerPhone}\n💼 خدمت: ${selectedService}\n💎 پلن: ${selectedPlan}\n🔑 کد پیگیری: ${bookingSuccess}`);
     window.open(`https://ble.ir/${managerPhone}?text=${text}`, '_blank');
   };
 
   // ارسال تاییدیه به مشتری در واتساپ
   const sendWhatsAppNotice = () => {
-    const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما با تعرفه رسمی مصوب اتحادیه در سیستم هوشمند ثبت شد. کد پیگیری: ${bookingSuccess}. از انتخاب هلدینگ رویال‌فام سپاسگزاریم.`);
+    const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما با تعرفه رسمی مصوب اتحادیه ثبت شد. کد پیگیری: ${bookingSuccess}. از انتخاب هلدینگ رویال‌فام سپاسگزاریم.`);
     window.open(`https://wa.me/98${customerPhone.slice(-10)}?text=${text}`, '_blank');
   };
 
   // ارسال تاییدیه به مشتری در تلگرام
   const sendTelegramNotice = () => {
-    const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما ثبت شد. کد پیگیری: ${bookingSuccess}. مدیریت هوشمند رویال‌فام.`);
+    const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما با موفقیت ثبت شد. کد پیگیری: ${bookingSuccess}. مدیریت هوشمند رویال‌فام.`);
     window.open(`https://t.me/share/url?url=https://royalbook-ai-demo.vercel.app&text=${text}`, '_blank');
   };
 
-  // تقویم گوگل (Google Calendar)
+  // تقویم گوگل
   const addToCalendar = () => {
     const title = encodeURIComponent(`نوبت سالن زیبایی (تعرفه صنفی): ${selectedService}`);
     const details = encodeURIComponent(`مشتری گرامی ${customerName}، نوبت شما ثبت شد. کد پیگیری: ${bookingSuccess}. پشتیبانی رویال‌فام: ${managerPhone}`);
@@ -101,10 +101,16 @@ export default function App() {
     <div style={{ backgroundColor: '#0f0f0f', color: '#f1f5f9', minHeight: '100vh', padding: '16px', fontFamily: 'sans-serif', direction: 'rtl', display: 'flex', justifyContent: 'center', paddingBottom: '80px' }}>
       <div style={{ width: '100%', maxWidth: '400px', backgroundColor: '#161616', border: '1px solid rgba(245, 158, 11, 0.4)', borderRadius: '24px', padding: '20px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         
-        {/* هدر بالایی با عنوان قدرتمند */}
-        <div style={{ textAlign: 'center', backgroundColor: '#1c1a16', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '16px', padding: '12px' }}>
-          <p style={{ fontSize: '9px', letterSpacing: '1px', color: '#fbbf24', margin: '0 0 4px 0', fontFamily: 'monospace' }}>ROYALBOOK | هلدینگ رویال‌فام</p>
-          <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#fde047', margin: '0 0 2px 0', lineHeight: '1.4' }}>اولین سیستم رزروآسیون هوش مصنوعی سالن‌ها و اصناف در ایران</p>
+        {/* هدر بالایی با عنوان قدرتمند و متن دقیق درخواستی شما */}
+        <div style={{ textAlign: 'center', backgroundColor: '#1c1a16', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '16px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <p style={{ fontSize: '9px', letterSpacing: '1px', color: '#fbbf24', margin: 0, fontFamily: 'monospace' }}>ROYALBOOK | هلدینگ رویال‌فام</p>
+          <p style={{ fontSize: '11px', fontWeight: 'bold', color: '#fde047', margin: 0, lineHeight: '1.4' }}>اولین سیستم رزروآسیون هوش مصنوعی سالن‌ها و اصناف در ایران</p>
+          
+          {/* متن درخواستی شما درباره تخصیص آیدی و پیام‌رسان‌ها پس از خرید */}
+          <div style={{ backgroundColor: 'rgba(245, 158, 11, 0.1)', border: '1px dashed rgba(245, 158, 11, 0.4)', borderRadius: '10px', padding: '8px', fontSize: '10px', color: '#cbd5e1', lineHeight: '1.5', textAlign: 'right' }}>
+            ✨ بعد از خرید پلن، آیدی پیج اینستاگرام، بله، واتساپ و تلگرام مدیر هر صنف با اسم برند کسب‌وکار خودتان قرار داده خواهد شد.
+          </div>
+
           <p style={{ fontSize: '9px', color: freeTokens > 0 ? '#38bdf8' : '#ef4444', margin: 0, fontWeight: 'bold' }}>
             {freeTokens > 0 ? `🎁 تست رایگان فعال: ${freeTokens} از ۱۰ بار باقیمانده` : '🔒 سهمیه تست تمام شد (سیستم نیازمند خرید پلن)'}
           </p>
@@ -117,7 +123,7 @@ export default function App() {
           
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', fontSize: '11px' }}>
             <a href={`https://instagram.com/${managerInstagram}`} target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'none', backgroundColor: 'rgba(56, 189, 248, 0.1)', padding: '4px 8px', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
-              اینستاگرام مدیر (@{managerInstagram}) ↗
+              اینستاگرام مدیر ↗
             </a>
             <a href={`tel:${managerPhone}`} style={{ color: '#4ade80', textDecoration: 'none', backgroundColor: 'rgba(74, 222, 128, 0.1)', padding: '4px 8px', borderRadius: '8px', border: '1px solid rgba(74, 222, 128, 0.2)' }}>
               تماس ↗
@@ -125,11 +131,11 @@ export default function App() {
           </div>
         </div>
 
-        {/* 📌 راهنمای اختصاصی نصب در بایو اینستاگرام مدیر سالن */}
+        {/* راهنمای نصب در بایو اینستاگرام */}
         <div style={{ backgroundColor: '#1c1a16', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '16px', padding: '12px', textAlign: 'right', fontSize: '11px', color: '#cbd5e1' }}>
           <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#38bdf8', margin: '0 0 6px 0', textAlign: 'center' }}>📌 راهنمای قرار دادن لینک در اینستاگرام مدیر سالن:</p>
           <ol style={{ margin: '0', paddingRight: '18px', lineHeight: '1.6', color: '#94a3b8' }}>
-            <li>وارد پروفایل اینستاگرام سالن خود (<strong style={{ color: '#38bdf8' }}>@{managerInstagram}</strong>) شوید.</li>
+            <li>وارد پروفایل اینستاگرام سالن خود شوید.</li>
             <li>روی گزینه <strong style={{ color: '#fff' }}>Edit Profile</strong> (ویرایش پروفایل) ضربه بزنید.</li>
             <li>لینک اختصاصی سایت را در قسمت <strong style={{ color: '#fff' }}>Website</strong> وارد کرده و ذخیره کنید.</li>
           </ol>
@@ -150,7 +156,7 @@ export default function App() {
         {/* قوانین عدم کنسلی */}
         <div style={{ backgroundColor: 'rgba(127, 29, 29, 0.3)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '16px', padding: '12px', textAlign: 'center', color: '#fca5a5', fontSize: '11px' }}>
           <p style={{ fontWeight: 'bold', margin: '0 0 4px 0' }}>⚠️ قوانین مهم رزرو (عدم کنسلی):</p>
-          <p style={{ margin: 0, color: '#cbd5e1' }}>وجه واریزی به‌عنوان بیعانه قطعی‌سازی نوبت بوده و به هیچ وجه قابل استرداد نمی‌باشد.</p>
+          <p style={{ margin: 0, color: '#cbd5e1' }}>وجه واریزی به‌عنوان بیعانه قطعی‌سازی نوبت بوده و قابل استرداد نمی‌باشد.</p>
         </div>
 
         {/* شماره کارت پویا */}
@@ -196,22 +202,19 @@ export default function App() {
           <div style={{ backgroundColor: 'rgba(6, 78, 59, 0.6)', border: '1px solid #059669', borderRadius: '12px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'center', color: '#34d399', fontSize: '11px', fontWeight: 'bold' }}>
             <div>🎉 رزرو موفق! کد پیگیری: {bookingSuccess}</div>
             
-            {/* دکمه ارسال گزارش به مدیر در پیام‌رسان بله */}
+            {/* دکمه‌های پیام‌رسان بله، واتساپ، تلگرام و تقویم */}
             <button onClick={sendToBaleManager} style={{ padding: '8px', backgroundColor: '#38bdf8', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               🤖 ارسال گزارش به مدیر در پیام‌رسان بله
             </button>
 
-            {/* ارسال به واتساپ */}
             <button onClick={sendWhatsAppNotice} style={{ padding: '8px', backgroundColor: '#4ade80', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               💬 ارسال تاییدیه به مشتری در واتساپ
             </button>
 
-            {/* ارسال به تلگرام */}
             <button onClick={sendTelegramNotice} style={{ padding: '8px', backgroundColor: '#60a5fa', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               ✈️ ارسال و اشتراک‌گذاری در تلگرام
             </button>
 
-            {/* تقویم گوگل */}
             <button onClick={addToCalendar} style={{ padding: '8px', backgroundColor: '#fde047', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               📅 ثبت یادآوری نوبت در تقویم گوگل (Google Calendar)
             </button>
