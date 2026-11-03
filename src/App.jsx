@@ -71,19 +71,19 @@ export default function App() {
     setFreeTokens(freeTokens - 1);
   };
 
-  // سیستم جایگزین پیامک سنتی: ارسال گزارش خودکار به مدیر در پیام‌رسان بله
+  // ارسال خودکار گزارش به مدیر در پیام‌رسان بله (Bale)
   const sendToBaleManager = () => {
-    const text = encodeURIComponent(`🤖 [دستیار هوشمند رویال‌فام]:\nرزرو جدید ثبت شد!\n\n👤 مشتری: ${customerName}\n📱 تلفن: ${customerPhone}\n💼 خدمت: ${selectedService}\n💎 پلن: ${selectedPlan}\n🔑 کد پیگیری: ${bookingSuccess}`);
+    const text = encodeURIComponent(`🤖 [دستیار هوشمند رویال‌فام - پیام‌رسان بله]:\nرزرو جدید ثبت شد!\n\n👤 مشتری: ${customerName}\n📱 تلفن: ${customerPhone}\n💼 خدمت: ${selectedService}\n💎 پلن: ${selectedPlan}\n🔑 کد پیگیری: ${bookingSuccess}`);
     window.open(`https://ble.ir/${managerPhone}?text=${text}`, '_blank');
   };
 
-  // ارسال خودکار دایرکت و تاییدیه هوشمند به مشتری در واتساپ
+  // ارسال تاییدیه به مشتری در واتساپ
   const sendWhatsAppNotice = () => {
     const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما با تعرفه رسمی مصوب اتحادیه در سیستم هوشمند ثبت شد. کد پیگیری: ${bookingSuccess}. از انتخاب هلدینگ رویال‌فام سپاسگزاریم.`);
     window.open(`https://wa.me/98${customerPhone.slice(-10)}?text=${text}`, '_blank');
   };
 
-  // ارسال تاییدیه هوشمند به مشتری در تلگرام
+  // ارسال تاییدیه به مشتری در تلگرام
   const sendTelegramNotice = () => {
     const text = encodeURIComponent(`سلام ${customerName} عزیز، نوبت شما ثبت شد. کد پیگیری: ${bookingSuccess}. مدیریت هوشمند رویال‌فام.`);
     window.open(`https://t.me/share/url?url=https://royalbook-ai-demo.vercel.app&text=${text}`, '_blank');
@@ -135,7 +135,7 @@ export default function App() {
           </ol>
         </div>
 
-        {/* بخش انتخاب پلن‌ها همراه با ویژگی‌های کامل ۶ و ۱۲ میلیونی */}
+        {/* بخش انتخاب پلن‌ها همراه با ویژگی‌های کامل */}
         <div style={{ backgroundColor: '#1c1a16', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '16px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#fbbf24', textAlign: 'center', margin: 0 }}>💎 انتخاب پلن هوشمند و امکانات:</p>
           <select value={selectedPlan} onChange={handlePlanChange} style={{ width: '100%', backgroundColor: '#111', border: '1px solid rgba(245, 158, 11, 0.4)', borderRadius: '10px', padding: '10px', color: '#fde047', fontSize: '11px', boxSizing: 'border-box' }}>
@@ -196,19 +196,22 @@ export default function App() {
           <div style={{ backgroundColor: 'rgba(6, 78, 59, 0.6)', border: '1px solid #059669', borderRadius: '12px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'center', color: '#34d399', fontSize: '11px', fontWeight: 'bold' }}>
             <div>🎉 رزرو موفق! کد پیگیری: {bookingSuccess}</div>
             
-            {/* دکمه‌های ارتباطی جایگزین پیامک (بله، واتساپ، تلگرام و تقویم گوگل) */}
+            {/* دکمه ارسال گزارش به مدیر در پیام‌رسان بله */}
             <button onClick={sendToBaleManager} style={{ padding: '8px', backgroundColor: '#38bdf8', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
-              🤖 ارسال خودکار گزارش به مدیر در بله
+              🤖 ارسال گزارش به مدیر در پیام‌رسان بله
             </button>
 
+            {/* ارسال به واتساپ */}
             <button onClick={sendWhatsAppNotice} style={{ padding: '8px', backgroundColor: '#4ade80', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
-              💬 ارسال دایرکت و تاییدیه به مشتری در واتساپ
+              💬 ارسال تاییدیه به مشتری در واتساپ
             </button>
 
+            {/* ارسال به تلگرام */}
             <button onClick={sendTelegramNotice} style={{ padding: '8px', backgroundColor: '#60a5fa', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               ✈️ ارسال و اشتراک‌گذاری در تلگرام
             </button>
 
+            {/* تقویم گوگل */}
             <button onClick={addToCalendar} style={{ padding: '8px', backgroundColor: '#fde047', color: '#09090b', border: 'none', borderRadius: '8px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}>
               📅 ثبت یادآوری نوبت در تقویم گوگل (Google Calendar)
             </button>
